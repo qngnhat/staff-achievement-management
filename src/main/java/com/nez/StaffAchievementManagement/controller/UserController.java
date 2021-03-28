@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nez.StaffAchievementManagement.model.User;
@@ -47,6 +48,19 @@ public class UserController {
 		User users = userRepository.findById(id).orElse(null);
 		model.addAttribute("users", users);
 		
+		return "user/index";
+	}
+	
+	@GetMapping("update-user")
+	public String viewUpdateUser() {
+		return "user/update-user";
+	}
+	
+	@RequestMapping	("update")
+	public String updateUser(User user, Model model) {
+		userRepository.save(user);
+		List<User> users = userRepository.findAll();
+		model.addAttribute("users", users);
 		return "user/index";
 	}
 	
