@@ -20,7 +20,7 @@ public class StaffController {
 	StaffRepository staffRepository;
 	
 	@GetMapping("index")
-	public String viewStaff (Model model) {
+	public String viewStaffs (Model model) {
 		List<Staff> staffs = staffRepository.findAll();
 		
 		model.addAttribute("staffs", staffs);
