@@ -64,15 +64,13 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Username</th>
-							<th>Password</th>
+							<th>Name</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="user : ${users}" data-toggle="modal" data-target="#updateUserModal">
-							<td th:text="${user.id}" id="id-table"></td>
-							<td th:text="${user.username}" id="username-table"></td>
-							<td th:text="${user.password}" id="password-table"></td>
+						<tr th:each="depart : ${departs}" data-toggle="modal" data-target="#updateUserModal">
+							<td th:text="${depart.id}" id="id-table"></td>
+							<td th:text="${depart.name}" id="username-table"></td>
 						</tr>
 					</tbody>
 

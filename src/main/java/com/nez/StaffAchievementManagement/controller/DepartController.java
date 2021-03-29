@@ -13,12 +13,13 @@ import com.nez.StaffAchievementManagement.model.Depart;
 import com.nez.StaffAchievementManagement.repository.DepartRepository;
 
 @Controller
+@RequestMapping("depart")
 public class DepartController {
 
 	@Autowired
 	DepartRepository departRepository;
 	
-	@GetMapping("depart")
+	@GetMapping("")
 	public String viewDeparts (Model model) {
 		List<Depart> departs = departRepository.findAll();
 		

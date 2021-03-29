@@ -63,15 +63,19 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Username</th>
-							<th>Password</th>
+							<th>Type</th>
+							<th>Reason</th>
+							<th>Date</th>
+							<th>Staff ID</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="user : ${users}" data-toggle="modal" data-target="#updateUserModal">
-							<td th:text="${user.id}" id="id-table"></td>
-							<td th:text="${user.username}" id="username-table"></td>
-							<td th:text="${user.password}" id="password-table"></td>
+						<tr th:each="record : ${records}" data-toggle="modal" data-target="#updateUserModal">
+							<td th:text="${record.id}" id="id-table"></td>
+							<td th:text="${record.type}" id="username-table"></td>
+							<td th:text="${record.reson}" id="password-table"></td>
+							<td th:text="${record.date}" id="password-table"></td>
+							<td th:text="${record.staff_id}" id="password-table"></td>
 						</tr>
 					</tbody>
 

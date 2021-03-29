@@ -14,12 +14,13 @@ import com.nez.StaffAchievementManagement.model.User;
 import com.nez.StaffAchievementManagement.repository.UserRepository;
 
 @Controller
+@RequestMapping("user")
 public class UserController {
 	@Autowired
 	UserRepository userRepository;
 
 	
-	@GetMapping("index")
+	@GetMapping("")
 	public String viewUsers(Model model) {
 		List<User> users = userRepository.findAll();
 

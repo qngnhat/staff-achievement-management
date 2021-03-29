@@ -13,11 +13,12 @@ import com.nez.StaffAchievementManagement.model.Record;
 import com.nez.StaffAchievementManagement.repository.RecordRepository;
 
 @Controller
+@RequestMapping("record")
 public class RecordController {
 	@Autowired
 	RecordRepository recordRepository;
 	
-	@GetMapping("record")
+	@GetMapping("")
 	public String viewRecords (Model model) {
 		List<Record> records = recordRepository.findAll();
 		

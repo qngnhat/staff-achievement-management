@@ -63,16 +63,28 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Username</th>
-							<th>Password</th>
+							<th>Name</th>
+							<th>Gender</th>
+							<th>Birthday</th>
+							<th>Photo</th>
+							<th>Email</th>
+							<th>Phone</th>
+							<th>Salary</th>
+							<th>Depart ID</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="user : ${users}" data-toggle="modal"
+						<tr th:each="staff : ${staffs}" data-toggle="modal"
 							data-target="#updateUserModal">
-							<td th:text="${user.id}" id="id-table"></td>
-							<td th:text="${user.username}" id="username-table"></td>
-							<td th:text="${user.password}" id="password-table"></td>
+							<td th:text="${staff.id}" id="id-table"></td>
+							<td th:text="${staff.name}" id="username-table"></td>
+							<td th:text="${staff.gender}" id="password-table"></td>
+							<td th:text="${staff.birthday}" id="password-table"></td>
+							<td th:text="${staff.photo}" id="password-table"></td>
+							<td th:text="${staff.email}" id="password-table"></td>
+							<td th:text="${staff.phone}" id="password-table"></td>
+							<td th:text="${staff.salary}" id="password-table"></td>
+							<td th:text="${staff.depart_id}" id="password-table"></td>
 						</tr>
 					</tbody>
 
