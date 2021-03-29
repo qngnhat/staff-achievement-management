@@ -1,22 +1,236 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
+	<!-- Required meta tags -->
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<!-- Import Boostrap css, js, font awesome here -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<link href="css/style.css" rel="stylesheet">
+	<title>BBC Company</title>
+	<link rel="icon" type="image/png" href="images/logo.png" />
 </head>
+
 <body>
+	<!-- Navaigation -->
+	<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top col-12">
 
+		<div class="container-fluid">
+			<a class="navbar-branch" href="#">
+				<img src="../static/images/logo.png" height="40">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link active" href="/">HOME</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">ABOUT</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">STAFF</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">DEPART</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">RECORD</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/user/index">USER</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- Carousel -->
+
+	<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="./images/carousel0.png" class="d-block w-100" alt="...">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>A demanding April in store</h5>
+					<p>Real Madrid will play seven matches, including the Clásico and the Champions League
+						quarter-finals.</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img src="./images/carousel1.png" class="d-block w-100" alt="...">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>How the kings of Europe forged their legacy</h5>
+					<p>Real Madrid are celebrating the anniversaries of the club's 13 European Cup triumphs during the period between 11 May and 13 June.</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img src="./images/carousel2.png" class="d-block w-100" alt="...">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>Benzema equals his best goalscoring streak as a Real Madrid player</h5>
+					<p>The French forward has now scored eight goals in six games.</p>
+				</div>
+			</div>
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+
+	<hr class="my-2">
+	<div class="container-fluid padding">
+		<div class="row welcome text-center">
+			<div class="col-12">
+				<h1 class="display-4">TOP 10 Nhân Viên Xuất Sắc Trong Tuần</h1>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid padding">
+		<div class="row padding">
+			<div class="col">
+				<div class="card">
+					<img class="card-img-top" src="./images/nguyenduchoang.png">
+					<div class="card-body">
+						<h4 class="card-title">Nguyen Duc Hoang</h4>
+						<p class="card-text">Phòng Ban</p>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card">
+					<img class="card-img-top" src="./images/nguyenduchoang.png">
+					<div class="card-body">
+						<h4 class="card-title">Nguyen Duc Hoang</h4>
+						<p class="card-text">Phòng Ban</p>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card">
+					<img class="card-img-top" src="./images/nguyenduchoang.png">
+					<div class="card-body">
+						<h4 class="card-title">Nguyen Duc Hoang</h4>
+						<p class="card-text">Phòng Ban</p>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card">
+					<img class="card-img-top" src="./images/nguyenduchoang.png">
+					<div class="card-body">
+						<h4 class="card-title">Nguyen Duc Hoang</h4>
+						<p class="card-text">Phòng Ban</p>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card">
+					<img class="card-img-top" src="./images/nguyenduchoang.png">
+					<div class="card-body">
+						<h4 class="card-title">Nguyen Duc Hoang</h4>
+						<p class="card-text">Phòng Ban</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr class="my-2">
+	<div class="container-fluid padding">
+		<div class="row text-center padding">
+			<div class="col-xs-12 col-sm-6 col-md-4 ">
+				<i class="fab fa-react"></i>
+				<h3>REACT</h3>
+				<p>Build the latest version of React</p>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4">
+				<i class="fab fa-angular"></i>
+				<h3>Angular</h3>
+				<p>Build your Website and Front-end Application</p>
+			</div>
+			<div class="col-sm-12 col-md-4">
+				<i class="fab fa-css3"></i>
+				<h3>CSS3 , HTML5</h3>
+				<p>Customize your web UI with Html5 and Css3</p>
+			</div>
+		</div>
+		<hr class="my-4">
+	</div>
+	<div class="container-fluid padding">
+		<div class="row padding">
+			<div class="col-md-12 col-lg-6">
+				<h2>If you build it...</h2>
+				<p>Arduino is an open-source hardware, software and content platform with a global community. It’s
+					intended for anyone making interactive projects.</p>
+				<p>Arduino Education is a dedicated team formed by education experts, content developers, engineers and
+					interaction designers from all around the world</p>
+				<br>
+			</div>
+			<div class="col-lg-6">
+				<img src="./images/laptop.JPG" class="img-fluid">
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid padding">
+		<div class="row text-center padding">
+			<div class="col-12">
+				<h2>Contact us</h2>
+			</div>
+			<div class="col-12 social padding">
+				<a href="https://www.facebook.com/RealMadrid" target="_blank"><i class="fab fa-facebook"></i></a>
+				<a href="https://twitter.com/realmadrid" target="_blank"><i class="fab fa-twitter"></i></a>
+				<a href="https://www.instagram.com/realmadrid/" target="_blank"><i class="fab fa-instagram"></i></a>
+				<a href="https://www.youtube.com/user/realmadridcf" target="_blank"><i class="fab fa-youtube"></i></a>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="container-fluid padding">
+			<div class="row text-center">
+				<div class="col-md-4">
+					<img src="../static/images/logo.png" style="height: 3rem; padding-top: 1rem;">
+					<hr class="light">
+					<p>111-222-3333</p>
+					<p>mymail@gmail.com</p>
+					<p>Bach Mai street, Hanoi, Vietnam</p>
+				</div>
+				<div class="col-md-4">
+					<hr class="light">
+					<h5>Working hours</h5>
+					<hr class="light">
+					<p>Monday-Friday: 8am - 5pm</p>
+					<p>Weekend: 8am - 12am</p>
+				</div>
+				<div class="col-md-4">
+					<hr class="light">
+					<h5>Services</h5>
+					<hr class="light">
+					<p>Outsourcing</p>
+					<p>Website development</p>
+					<p>Mobile applications</p>
+				</div>
+				<div class="col-12">
+					<hr class="light-100">
+					<h5 style="color: #FB8B00;">&copy; WebPro</h5>
+				</div>
+			</div>
+		</div>
+	</footer>
 </body>
-</html>	
 
-
-
-
-
-
-
-
-
-
-
-
+</html>
