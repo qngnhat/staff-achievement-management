@@ -13,30 +13,25 @@ import com.nez.StaffAchievementManagement.model.Record;
 import com.nez.StaffAchievementManagement.repository.RecordRepository;
 
 @Controller
-@RequestMapping("record")
 public class RecordController {
 	@Autowired
 	RecordRepository recordRepository;
 	
-	@GetMapping("index")
+	@GetMapping("record")
 	public String viewRecords (Model model) {
 		List<Record> records = recordRepository.findAll();
 		
 		model.addAttribute("records", records);
-		return "record/index";
+		return "record";
 	}
 	
-	@GetMapping("add-record")
-	public String viewAddRecord() {
-		return "record/add-record";
-	}
 	
 	@RequestMapping("add")
 	public String addDepart(Record record, Model model) {
 		recordRepository.save(record);
 		List<Record> records = recordRepository.findAll();
 		model.addAttribute("records", records);
-		return "record/index";
+		return "record";
 	}
 	
 	@GetMapping("{id}")
@@ -44,12 +39,7 @@ public class RecordController {
 		Record records = recordRepository.findById(id).orElse(null);
 		model.addAttribute("records", records);
 		
-		return "record/index";
-	}
-	
-	@GetMapping("update-record")
-	public String viewUpdateRecord() {
-		return "record/update-record";
+		return "record";
 	}
 	
 	@RequestMapping	("update")
@@ -57,7 +47,7 @@ public class RecordController {
 		recordRepository.save(record);
 		List<Record> records = recordRepository.findAll();
 		model.addAttribute("records", records);
-		return "record/index";
+		return "record";
 	}
 	
 	@RequestMapping("delete/{id}")
@@ -67,6 +57,6 @@ public class RecordController {
 		
 		List<Record> records = recordRepository.findAll();
 		model.addAttribute("records", records);
-		return "record/index";
+		return "record";
 	}
 }

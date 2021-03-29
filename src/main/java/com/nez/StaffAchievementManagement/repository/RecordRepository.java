@@ -7,5 +7,4 @@ import com.nez.StaffAchievementManagement.model.Record;
 
 @Repository
 public interface RecordRepository extends JpaRepository<Record, Integer>{
-
 }

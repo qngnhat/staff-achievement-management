@@ -14,7 +14,6 @@ import com.nez.StaffAchievementManagement.model.User;
 import com.nez.StaffAchievementManagement.repository.UserRepository;
 
 @Controller
-@RequestMapping("user")
 public class UserController {
 	@Autowired
 	UserRepository userRepository;
@@ -25,20 +24,16 @@ public class UserController {
 		List<User> users = userRepository.findAll();
 
 		model.addAttribute("users", users);
-		return "user/index";
+		return "user";
 	}
 	
-	@GetMapping("add-user")
-	public String viewAddUser() {
-		return "user/add-user";
-	}
 	
 	@RequestMapping("add")
 	public String addUser(User user, Model model) {
 		userRepository.save(user);
 		List<User> users = userRepository.findAll();
 		model.addAttribute("users", users);
-		return "user/index";
+		return "user";
 	}
 	
 	@GetMapping("{id}")
@@ -46,12 +41,7 @@ public class UserController {
 		User users = userRepository.findById(id).orElse(null);
 		model.addAttribute("users", users);
 		
-		return "user/index";
-	}
-	
-	@GetMapping("update-user")
-	public String viewUpdateUser() {
-		return "user/update-user";
+		return "user";
 	}
 	
 	@RequestMapping	("update")
@@ -59,7 +49,7 @@ public class UserController {
 		userRepository.save(user);
 		List<User> users = userRepository.findAll();
 		model.addAttribute("users", users);
-		return "user/index";
+		return "user";
 	}
 	
 	@RequestMapping("delete/{id}")
@@ -69,7 +59,7 @@ public class UserController {
 		
 		List<User> users = userRepository.findAll();
 		model.addAttribute("users", users);
-		return "user/index";
+		return "user";
 	}
 	
 	

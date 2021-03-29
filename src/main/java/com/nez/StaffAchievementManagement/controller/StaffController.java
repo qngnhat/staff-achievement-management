@@ -13,31 +13,26 @@ import com.nez.StaffAchievementManagement.model.Staff;
 import com.nez.StaffAchievementManagement.repository.StaffRepository;
 
 @Controller
-@RequestMapping("staff")
 public class StaffController {
 
 	@Autowired
 	StaffRepository staffRepository;
 	
-	@GetMapping("index")
+	@GetMapping("staff")
 	public String viewStaffs (Model model) {
 		List<Staff> staffs = staffRepository.findAll();
 		
 		model.addAttribute("staffs", staffs);
-		return "staff/index";
+		return "staff";
 	}
 	
-	@GetMapping("add-staff")
-	public String viewAddStaff() {
-		return "staff/add-staff";
-	}
 	
 	@RequestMapping("add")
 	public String addStaff(Staff staff, Model model) {
 		staffRepository.save(staff);
 		List<Staff> staffs = staffRepository.findAll();
 		model.addAttribute("staffs", staffs);
-		return "staff/index";
+		return "staff";
 	}
 	
 	@GetMapping("{id}")
@@ -45,12 +40,7 @@ public class StaffController {
 		Staff staffs = staffRepository.findById(id).orElse(null);
 		model.addAttribute("staffs", staffs);
 		
-		return "staff/index";
-	}
-	
-	@GetMapping("update-staff")
-	public String viewUpdateStaff() {
-		return "staff/update-staff";
+		return "staff";
 	}
 	
 	@RequestMapping	("update")
@@ -58,7 +48,7 @@ public class StaffController {
 		staffRepository.save(staff);
 		List<Staff> staffs = staffRepository.findAll();
 		model.addAttribute("staffs", staffs);
-		return "staff/index";
+		return "staff";
 	}
 	
 	@RequestMapping("delete/{id}")
@@ -68,6 +58,6 @@ public class StaffController {
 		
 		List<Staff> staffs = staffRepository.findAll();
 		model.addAttribute("staffs", staffs);
-		return "staff/index";
+		return "staff";
 	}
 }

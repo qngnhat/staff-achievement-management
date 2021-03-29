@@ -7,5 +7,5 @@ import com.nez.StaffAchievementManagement.model.Depart;
 
 @Repository
 public interface DepartRepository extends JpaRepository<Depart, Integer> {
-	
+
 }

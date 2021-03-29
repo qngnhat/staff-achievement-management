@@ -13,23 +13,17 @@ import com.nez.StaffAchievementManagement.model.Depart;
 import com.nez.StaffAchievementManagement.repository.DepartRepository;
 
 @Controller
-@RequestMapping("depart")
 public class DepartController {
 
 	@Autowired
 	DepartRepository departRepository;
 	
-	@GetMapping("index")
+	@GetMapping("depart")
 	public String viewDeparts (Model model) {
 		List<Depart> departs = departRepository.findAll();
 		
 		model.addAttribute("departs", departs);
-		return "depart/index";
-	}
-	
-	@GetMapping("add-depart")
-	public String viewAddDepart() {
-		return "depart/add-depart";
+		return "depart";
 	}
 	
 	@RequestMapping("add")
@@ -37,7 +31,7 @@ public class DepartController {
 		departRepository.save(depart);
 		List<Depart> departs = departRepository.findAll();
 		model.addAttribute("departs", departs);
-		return "depart/index";
+		return "depart";
 	}
 	
 	@GetMapping("{id}")
@@ -45,20 +39,16 @@ public class DepartController {
 		Depart departs = departRepository.findById(id).orElse(null);
 		model.addAttribute("departs", departs);
 		
-		return "depart/index";
+		return "depart";
 	}
 	
-	@GetMapping("update-depart")
-	public String viewUpdateDepart() {
-		return "depart/update-depart";
-	}
 	
 	@RequestMapping	("update")
 	public String updateDepart(Depart depart, Model model) {
 		departRepository.save(depart);
 		List<Depart> departs = departRepository.findAll();
 		model.addAttribute("departs", departs);
-		return "depart/index";
+		return "depart";
 	}
 	
 	@RequestMapping("delete/{id}")
@@ -68,6 +58,6 @@ public class DepartController {
 		
 		List<Depart> departs = departRepository.findAll();
 		model.addAttribute("departs", departs);
-		return "depart/index";
+		return "depart";
 	}
 }
