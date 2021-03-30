@@ -2,6 +2,8 @@ package com.nez.StaffAchievementManagement.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,22 +13,27 @@ public class User {
 	private int id;
 	private String username;
 	private String password;
+	private boolean role;
+	@OneToOne
+	@JoinColumn(name = "staff_id")
+	private Staff staff;
 	
 	
 	public User() {
-		super();
 	}
 
 
 
-	public User(int id, String username, String password) {
+
+
+	public User(int id, String username, String password, boolean role, Staff staff) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
+		this.role = role;
+		this.staff = staff;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -49,9 +56,39 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+
+	public boolean isRole() {
+		return role;
+	}
+
+
+
+	public void setRole(boolean role) {
+		this.role = role;
+	}
+
+
+
+	public Staff getStaff() {
+		return staff;
+	}
+
+
+
+	public void setStaff(Staff staff) {
+		this.staff = staff;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return "Departs [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + ", staff="
+				+ staff + "]";
 	}
+
+
+
+	
 }

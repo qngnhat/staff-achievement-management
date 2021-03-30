@@ -1,15 +1,14 @@
 package com.nez.StaffAchievementManagement.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "staffs")
@@ -23,23 +22,28 @@ public class Staff {
 	private String email;
 	private String phone;
 	private int salary;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "staff_id", referencedColumnName = "id")
-	private List<Record> records = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name = "depart_id")
+	private Depart depart;
+	@OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
+	private Collection<Record> records;
 
 	public Staff() {
 	}
 
-	public Staff(int id, String name, boolean gender, String date, String photo, String email, String phone, int salary) {
+	public Staff(int id, String name, boolean gender, String birthday, String photo, String email, String phone,
+			int salary, Depart depart, Collection<Record> records) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
-		this.birthday = date;
+		this.birthday = birthday;
 		this.photo = photo;
 		this.email = email;
 		this.phone = phone;
 		this.salary = salary;
+		this.depart = depart;
+		this.records = records;
 	}
 
 	public int getId() {
@@ -65,7 +69,6 @@ public class Staff {
 	public void setGender(boolean gender) {
 		this.gender = gender;
 	}
-
 
 	public String getBirthday() {
 		return birthday;
@@ -107,19 +110,27 @@ public class Staff {
 		this.salary = salary;
 	}
 
-	public List<Record> getRecords() {
+	public Depart getDepart() {
+		return depart;
+	}
+
+	public void setDepart(Depart depart) {
+		this.depart = depart;
+	}
+
+	public Collection<Record> getRecords() {
 		return records;
 	}
 
-	public void setRecords(List<Record> records) {
+	public void setRecords(Collection<Record> records) {
 		this.records = records;
 	}
 
 	@Override
 	public String toString() {
 		return "Staff [id=" + id + ", name=" + name + ", gender=" + gender + ", birthday=" + birthday + ", photo="
-				+ photo + ", email=" + email + ", phone=" + phone + ", salary=" + salary +  "]";
+				+ photo + ", email=" + email + ", phone=" + phone + ", salary=" + salary + ", depart=" + depart
+				+ ", records=" + records + "]";
 	}
 
-	
 }

@@ -1,12 +1,10 @@
 package com.nez.StaffAchievementManagement.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,16 +14,17 @@ public class Depart {
 	@Id
 	private int id;
 	private String name;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "depart_id", referencedColumnName = "id")
-	private List<Staff> staffs = new ArrayList<>();
+	@OneToMany(mappedBy = "depart", cascade = CascadeType.ALL)
+	private Collection<Staff> staffs;
+
 	public Depart() {
 	}
 
-	public Depart(int id, String name) {
+	public Depart(int id, String name, Collection<Staff> staffs) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.staffs = staffs;
 	}
 
 	public int getId() {
@@ -44,11 +43,11 @@ public class Depart {
 		this.name = name;
 	}
 
-	public List<Staff> getStaffs() {
+	public Collection<Staff> getStaffs() {
 		return staffs;
 	}
 
-	public void setStaffs(List<Staff> staffs) {
+	public void setStaffs(Collection<Staff> staffs) {
 		this.staffs = staffs;
 	}
 
@@ -57,5 +56,4 @@ public class Depart {
 		return "Depart [id=" + id + ", name=" + name + ", staffs=" + staffs + "]";
 	}
 
-	
 }

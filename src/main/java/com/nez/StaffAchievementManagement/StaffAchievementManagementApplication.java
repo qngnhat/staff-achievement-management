@@ -1,6 +1,8 @@
 package com.nez.StaffAchievementManagement;
 
 
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -36,58 +38,51 @@ public class StaffAchievementManagementApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
+		Depart depart1 = new Depart();depart1.setId(1);depart1.setName("Truyền thông");
+		Depart depart2 = new Depart();depart2.setId(2);depart2.setName("Thiết kế");
+		Depart depart3 = new Depart();depart3.setId(3);depart3.setName("Thi công");
 
-		User user = new User(1, "admin", "admin");
-		User user1 = new User(2, "nez", "nez");
+		Staff staff1 = new Staff();staff1.setId(1);staff1.setName("Iker Casillas");staff1.setGender(true);staff1.setBirthday("1985-05-11");staff1.setPhoto("../images/casillas.png");staff1.setEmail("qngnhat@gmail.com");staff1.setPhone("0983212321");staff1.setSalary(100000);staff1.setDepart(depart1);
+		Staff staff2 = new Staff();staff2.setId(2);staff2.setName("Pepe");staff2.setGender(false); staff2.setBirthday("1985-05-11");staff2.setPhoto("../images/pepe.png");staff2.setEmail("qngnhat@gmail.com");staff2.setPhone("09843122311");staff2.setSalary(100000);staff2.setDepart(depart1);
+		Staff staff3 = new Staff();staff3.setId(3);staff3.setName("Dani Carvajal");staff3.setGender(true);staff3.setBirthday("1985-02-15");staff3.setPhoto("../images/carvajal.png");staff3.setEmail("qngnhat@gmail.com");staff3.setPhone("0983892344");staff3.setSalary(130000);staff3.setDepart(depart2);
+		Staff staff4 = new Staff();staff4.setId(4);staff4.setName("Sergio Ramos");staff4.setGender(false);staff4.setBirthday("1986-11-10");staff4.setPhoto("../images/ramos.png");staff4.setEmail("qngnhat@gmail.com");staff4.setPhone("0987567651");staff4.setSalary(170000);staff4.setDepart(depart3);
 		
+		User user1 = new User();user1.setId(1);user1.setUsername("admin");user1.setPassword("admin");user1.setRole(true);user1.setStaff(staff1);
+		User user2 = new User();user2.setId(2);user2.setUsername("nez");user2.setPassword("nez");user2.setRole(false);user2.setStaff(staff2);
 		
-		Depart depart = new Depart( 1 , "Tiền đạo");
-		Depart depart1 = new Depart(2, "Tiền vệ");
-		Depart depart2 = new Depart(3, "Hậu vệ");
-		Depart depart3 = new Depart(4, "Thủ Môn");
-		Depart depart4 = new Depart(5, "Dự bị");
+		Record record1 = new Record();record1.setId(1);record1.setType(true);record1.setReason("Hoàn thành tốt công việc");record1.setDate("2021-02-21");record1.setStaff(staff2);
+		Record record2 = new Record();record2.setId(2);record2.setType(false);record2.setReason("Đi làm muộn");record2.setDate("2021-02-21");record2.setStaff(staff1);
+		Record record3 = new Record();record3.setId(3);record3.setType(false);record3.setReason("Chậm deadline");record3.setDate("2021-02-21");record3.setStaff(staff1);
+		Record record4 = new Record();record4.setId(4);record4.setType(true);record4.setReason("Hoàn thành tốt công việc");record4.setDate("2021-02-21");record4.setStaff(staff3);
 
 		
-		Staff staff = new Staff(1, "Iker Casillas", true, "1985-05-11", "../images/casillas.png", "qngnhat@gmail.com", "0983212321", 100000);
-		Staff staff1 = new Staff(2, "Pepe", false, "1985-05-11", "../images/pepe.png", "qngnhat@gmail.com", "0983212321", 120000);
-		Staff staff2 = new Staff(3, "Dani Carvajal", true, "1987-01-22", "../images/carvajal.png", "qngnhat@gmail.com", "0983212321", 150000);
-		Staff staff3 = new Staff(4, "Sergio Ramos", false, "1986-11-10", "../images/ramos.png", "qngnhat@gmail.com", "0983212321", 120000);
-		Staff staff4 = new Staff(5, "Varane", false, "1992-02-19", "../images/varane.png", "qngnhat@gmail.com", "0983212321", 140000);
-
-		depart3.getStaffs().add(staff);
-		depart2.getStaffs().add(staff1);
-		depart2.getStaffs().add(staff2);
-		depart2.getStaffs().add(staff3);
-		depart2.getStaffs().add(staff4);
-
-		Record record = new Record(1, true, "Tích cực tham gia tấn công", "2021-02-21");
-		Record record1 = new Record(2, false, "Xử lý lỗi nhiều", "2021-02-21");
-		Record record2 = new Record(3, true, "Phạm lỗi nhiều", "2021-02-24" );
-		Record record3 = new Record(4, false, "Ghi bàn thắng", "2021-03-12");
-		Record record4 = new Record(5, true, "Phòng ngự tốt","2021-03-17");
+		depart1.setStaffs(Collections.singleton(staff1));
+		departRepository.saveAndFlush(depart1);
 		
-		staff.getRecords().add(record);
-		staff3.getRecords().add(record1);
-		staff1.getRecords().add(record2);
-		staff4.getRecords().add(record3);
-		staff.getRecords().add(record4);
-		this.userRepository.save(user);
-		this.userRepository.save(user1);
-		this.departRepository.save(depart);
-		this.departRepository.save(depart1);
-		this.departRepository.save(depart2);
-		this.departRepository.save(depart3);
-		this.departRepository.save(depart4);
-		this.staffRepository.save(staff);
-		this.staffRepository.save(staff1);
-		this.staffRepository.save(staff2);
-		this.staffRepository.save(staff3);
-		this.staffRepository.save(staff4);
-		this.recordRepository.save(record);
-		this.recordRepository.save(record1);
-		this.recordRepository.save(record2);
-		this.recordRepository.save(record3);
-		this.recordRepository.save(record4);
+		depart1.setStaffs(Collections.singleton(staff2));
+		departRepository.saveAndFlush(depart1);
+		
+		depart2.setStaffs(Collections.singleton(staff3));
+		departRepository.saveAndFlush(depart2);
+		
+		depart3.setStaffs(Collections.singleton(staff4));
+		departRepository.saveAndFlush(depart3);
+		
+		staff1.setRecords(Collections.singleton(record2));
+		staffRepository.saveAndFlush(staff1);
+		
+		staff1.setRecords(Collections.singleton(record3));
+		staffRepository.saveAndFlush(staff1);
+		
+		staff2.setRecords(Collections.singleton(record1));
+		staffRepository.saveAndFlush(staff2);
+		
+		staff3.setRecords(Collections.singleton(record4));
+		staffRepository.saveAndFlush(staff3);
+		
+		userRepository.save(user1);
+		userRepository.save(user2);
+
 	}
 
 }
