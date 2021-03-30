@@ -1,6 +1,7 @@
 package com.nez.StaffAchievementManagement.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -12,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "records")
 public class Record {
 	@Id
+	@GeneratedValue
 	private int id;
 	private boolean type;
 	private String reason;

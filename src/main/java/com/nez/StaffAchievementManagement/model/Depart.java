@@ -4,6 +4,8 @@ import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -12,9 +14,10 @@ import javax.persistence.Table;
 @Table(name = "departs")
 public class Depart {
 	@Id
+	@GeneratedValue
 	private int id;
 	private String name;
-	@OneToMany(mappedBy = "depart", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "depart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Collection<Staff> staffs;
 
 	public Depart() {

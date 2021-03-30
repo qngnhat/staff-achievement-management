@@ -4,16 +4,21 @@ import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.NumberFormat;
+
 @Entity
 @Table(name = "staffs")
 public class Staff {
 	@Id
+	@GeneratedValue
 	private int id;
 	private String name;
 	private boolean gender;
@@ -25,7 +30,7 @@ public class Staff {
 	@ManyToOne
 	@JoinColumn(name = "depart_id")
 	private Depart depart;
-	@OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "staff", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Collection<Record> records;
 
 	public Staff() {

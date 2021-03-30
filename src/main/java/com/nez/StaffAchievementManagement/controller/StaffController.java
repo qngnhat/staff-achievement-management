@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nez.StaffAchievementManagement.model.Staff;
+import com.nez.StaffAchievementManagement.repository.DepartRepository;
 import com.nez.StaffAchievementManagement.repository.StaffRepository;
 
 @Controller
@@ -17,13 +18,14 @@ import com.nez.StaffAchievementManagement.repository.StaffRepository;
 public class StaffController {
 	@Autowired
 	StaffRepository staffRepository;
-
+	
+	@Autowired
+	DepartRepository departRepository;
+	
 	@GetMapping("")
 	public String viewStaffs(Model model) {
 		List<Staff> staffs = staffRepository.findAll();
-
-		model.addAttribute("staffs", staffs);
-		System.out.println(staffs);
+		model.addAttribute("staffs", staffs);		
 		return "staff";
 	}
 
