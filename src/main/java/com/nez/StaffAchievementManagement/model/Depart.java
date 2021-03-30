@@ -53,7 +53,8 @@ public class Depart {
 
 	@Override
 	public String toString() {
-		return "Depart [id=" + id + ", name=" + name + ", staffs=" + staffs + "]";
+		return "Depart [id=" + id + ", name=" + name + "]";
 	}
+
 
 }

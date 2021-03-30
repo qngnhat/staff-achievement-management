@@ -65,6 +65,9 @@
 							<th>Id</th>
 							<th>Username</th>
 							<th>Password</th>
+							<th>Role</th>
+							<th>Staff id</th>
+							<th>Staff name</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -73,6 +76,9 @@
 							<td th:text="${user.id}" id="id-table"></td>
 							<td th:text="${user.username}" id="username-table"></td>
 							<td th:text="${user.password}" id="password-table"></td>
+							<td th:text="${user.role}" id="password-table"></td>
+							<td th:text="${user.staff.id}" id="password-table"></td>
+							<td th:text="${user.staff.name}" id="password-table"></td>
 						</tr>
 					</tbody>
 

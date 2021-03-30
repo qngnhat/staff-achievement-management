@@ -70,6 +70,8 @@
 							<th>Email</th>
 							<th>Phone</th>
 							<th>Salary</th>
+							<th>Depart id</th>
+							<th>Depart name</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -83,6 +85,8 @@
 							<td th:text="${staff.email}" id="password-table"></td>
 							<td th:text="${staff.phone}" id="password-table"></td>
 							<td th:text="${staff.salary}" id="password-table"></td>
+							<td th:text="${staff.depart.id}" id="password-table"></td>							
+							<td th:text="${staff.depart.name}" id="password-table"></td>							
 						</tr>
 					</tbody>
 

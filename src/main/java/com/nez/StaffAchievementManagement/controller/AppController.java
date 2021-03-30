@@ -15,6 +15,11 @@ public class AppController {
 	public String viewHome() {
 		return "home";
 	}
+	
+	@GetMapping("about")
+	public String viewAbout() {
+		return "about";
+	}
 
 	
 	
