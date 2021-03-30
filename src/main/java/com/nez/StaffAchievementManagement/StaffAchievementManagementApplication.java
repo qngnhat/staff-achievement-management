@@ -48,11 +48,11 @@ public class StaffAchievementManagementApplication implements CommandLineRunner{
 		Depart depart4 = new Depart(5, "Dự bị");
 
 		
-		Staff staff = new Staff(1, "Iker Casillas", true, "1985-05-11", "/resources/images/casillas.png", "qngnhat@gmail.com", "0983212321", 100000);
-		Staff staff1 = new Staff(2, "Pepe", false, "1985-05-11", "/resources/images/pepe.png", "qngnhat@gmail.com", "0983212321", 120000);
-		Staff staff2 = new Staff(3, "Dani Carvajal", true, "1987-01-22", "/resources/images/carvajal.png", "qngnhat@gmail.com", "0983212321", 150000);
-		Staff staff3 = new Staff(4, "Sergio Ramos", false, "1986-11-10", "/resources/images/ramos.png", "qngnhat@gmail.com", "0983212321", 120000);
-		Staff staff4 = new Staff(5, "Varane", false, "1992-02-19", "/resources/images/varane.png", "qngnhat@gmail.com", "0983212321", 140000);
+		Staff staff = new Staff(1, "Iker Casillas", true, "1985-05-11", "../images/casillas.png", "qngnhat@gmail.com", "0983212321", 100000);
+		Staff staff1 = new Staff(2, "Pepe", false, "1985-05-11", "../images/pepe.png", "qngnhat@gmail.com", "0983212321", 120000);
+		Staff staff2 = new Staff(3, "Dani Carvajal", true, "1987-01-22", "../images/carvajal.png", "qngnhat@gmail.com", "0983212321", 150000);
+		Staff staff3 = new Staff(4, "Sergio Ramos", false, "1986-11-10", "../images/ramos.png", "qngnhat@gmail.com", "0983212321", 120000);
+		Staff staff4 = new Staff(5, "Varane", false, "1992-02-19", "../images/varane.png", "qngnhat@gmail.com", "0983212321", 140000);
 
 		depart3.getStaffs().add(staff);
 		depart2.getStaffs().add(staff1);

@@ -70,7 +70,6 @@
 							<th>Email</th>
 							<th>Phone</th>
 							<th>Salary</th>
-							<th>Depart ID</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -80,11 +79,10 @@
 							<td th:text="${staff.name}" id="username-table"></td>
 							<td th:text="${staff.gender}" id="password-table"></td>
 							<td th:text="${staff.birthday}" id="password-table"></td>
-							<td th:text="${staff.photo}" id="password-table"></td>
+							<td id="password-table"> <img alt="" th:src="${staff.photo}">
 							<td th:text="${staff.email}" id="password-table"></td>
 							<td th:text="${staff.phone}" id="password-table"></td>
 							<td th:text="${staff.salary}" id="password-table"></td>
-							<td th:text="${staff.depart_id}" id="password-table"></td>
 						</tr>
 					</tbody>
 
