@@ -3,11 +3,13 @@ package com.nez.StaffAchievementManagement.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nez.StaffAchievementManagement.model.Staff;
 import com.nez.StaffAchievementManagement.repository.DepartRepository;
@@ -23,9 +25,10 @@ public class StaffController {
 	DepartRepository departRepository;
 	
 	@GetMapping("")
-	public String viewStaffs(Model model) {
-		List<Staff> staffs = staffRepository.findAll();
-		model.addAttribute("staffs", staffs);		
+	public String viewStaffs(Model model, @RequestParam(defaultValue = "0") int page) {
+//		List<Staff> staffs = staffRepository.findAll();
+//		model.addAttribute("staffs", staffs);		
+		model.addAttribute("staffs", staffRepository.findAll(PageRequest.of(page, 4)));
 		return "staff";
 	}
 
@@ -62,4 +65,5 @@ public class StaffController {
 		model.addAttribute("staffs", staffs);
 		return "staff";
 	}
+
 }
