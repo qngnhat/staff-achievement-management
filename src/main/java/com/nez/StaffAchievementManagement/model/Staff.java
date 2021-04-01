@@ -17,7 +17,6 @@ import javax.persistence.Table;
 @Table(name = "staffs")
 public class Staff {
 	@Id
-	@GeneratedValue
 	private int id;
 	private String name;
 	private boolean gender;

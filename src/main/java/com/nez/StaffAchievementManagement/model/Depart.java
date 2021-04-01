@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Table(name = "departs")
 public class Depart {
 	@Id
-	@GeneratedValue
 	private int id;
 	private String name;
 	@OneToMany(mappedBy = "depart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -287,16 +287,15 @@
 								<div class="form-group col-md-6">
 									<label for="inputState">Depart</label> <select name="depart"
 										id="inputState" class="form-control">
-										<option selected value="true"></option>
+										<option selected th:each="depart : ${departs}"
+											th:text="${depart.name}" th:value="${depart.id}"></option>
 									</select>
 								</div>
 							</div>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Create</button>
 						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary">Create</button>
 					</div>
 				</div>
 			</div>

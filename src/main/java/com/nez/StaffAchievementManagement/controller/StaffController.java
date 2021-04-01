@@ -25,10 +25,9 @@ public class StaffController {
 	DepartRepository departRepository;
 	
 	@GetMapping("")
-	public String viewStaffs(Model model, @RequestParam(defaultValue = "0") int page) {
-//		List<Staff> staffs = staffRepository.findAll();
-//		model.addAttribute("staffs", staffs);		
-		model.addAttribute("staffs", staffRepository.findAll(PageRequest.of(page, 4)));
+	public String viewStaffs(Model model) {
+		model.addAttribute("departs", departRepository.findAll());		
+		model.addAttribute("staffs", staffRepository.findAll());
 		return "staff";
 	}
 
