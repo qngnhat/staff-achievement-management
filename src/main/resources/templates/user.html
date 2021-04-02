@@ -76,104 +76,11 @@
 			</div>
 		</div>
 	</div>
-	<!-- Modal -->
 	<div class="container-fluid padding">
-
 		<div class="row text-right">
 			<div class="col align-self-end" style="right: 0;">
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#addUserModal">New user</button>
-			</div>
-		</div>
-
-	</div>
-
-	<!-- Add User Modal -->
-	<div class="modal fade" id="addUserModal" tabindex="-1"
-		aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">New user</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="add">
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">ID:</label> <input
-								type="text" class="form-control" name="id">
-						</div>
-						<div class="form-group">
-							<label for="message-text" class="col-form-label">Username:</label>
-							<textarea class="form-control" name="username"></textarea>
-						</div>
-						<div class="form-group">
-							<label for="message-text" class="col-form-label">Password:</label>
-							<textarea class="form-control" name="password"></textarea>
-						</div>
-						<div class="form-group col-md-4">
-										<label for="inputRole">Role</label> <select name="role"
-											id="inputRole" class="form-control">
-											<option selected value="true">Admin</option>
-											<option value="false">User</option>
-										</select>
-									</div>
-						<div class="form-group">
-								<label for="inputName">Staff Name</label> <select name="staff_id"
-									id="inputState" class="form-control">
-									<option selected th:each="staff : ${staffs}"
-										th:text="${staff.name}" th:value="${staff.id}"></option>
-								</select>
-							</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">Add</button>
-						</div>
-					</form>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<!-- Modify User Modal -->
-	<div class="modal fade" id="updateUserModal" tabindex="-1"
-		aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Modify user</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="add">
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">ID:</label> <input
-								type="text" class="form-control" name="id">
-						</div>
-						<div class="form-group">
-							<label for="message-text" class="col-form-label">Username:</label>
-							<textarea class="form-control" name="username"></textarea>
-						</div>
-						<div class="form-group">
-							<label for="message-text" class="col-form-label">Password:</label>
-							<textarea class="form-control" name="password"></textarea>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">Modify</button>
-						</div>
-					</form>
-				</div>
-
+				<a th:href="@{/user/new}"><button type="button"
+						class="btn btn-primary">Create User</button></a>
 			</div>
 		</div>
 	</div>

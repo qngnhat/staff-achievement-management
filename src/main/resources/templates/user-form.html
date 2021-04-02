@@ -14,7 +14,7 @@
 	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 <link href="css/style.css" rel="stylesheet">
 <title>New Depart | BBC Company</title>
-<link rel="icon" type="image/png" th:href="@{../images/logo.png}"
+<link rel="icon" th:type="image/png" th:href="@{../images/logo.png}"
 	th:src="@{../images/logo.png}" />
 </head>
 
@@ -36,10 +36,10 @@
 					<li class="nav-item"><a class="nav-link" th:href="@{/}">HOME</a></li>
 					<li class="nav-item"><a class="nav-link" th:href="@{/about}">ABOUT</a></li>
 					<li class="nav-item"><a class="nav-link" th:href="@{/staff}">STAFF</a></li>
-					<li class="nav-item"><a class="nav-link"
-						th:href="@{/depart}">DEPART</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/depart}">DEPART</a></li>
 					<li class="nav-item"><a class="nav-link" th:href="@{/record}">RECORD</a></li>
-					<li class="nav-item"><a class="nav-link active" th:href="@{/user}">USER</a></li>
+					<li class="nav-item"><a class="nav-link active"
+						th:href="@{/user}">USER</a></li>
 				</ul>
 			</div>
 		</div>
@@ -49,18 +49,32 @@
 		<div>
 			<h1>Create New Depart</h1>
 		</div>
-		<form th:action="@{/depart/save}" th:object="${depart}" method="post"
+		<form th:action="@{/user/save}" th:object="${user}" method="post"
 			style="max-width: 600px; margin: 0 auto;">
-			<div class="m-3">
-				<div class="form-group row">
-					<label class="col-form-label col-sm-4">Depart name</label>
-					<div class="con-sm-8">
-						<input class="form-control" type="text" th:field="*{name}" required="required">
-					</div>
-				</div>
+			<div class="form-group">
+				<label>User name:</label>
+				<input type="text" class="form-control" th:field="*{username}"></input>
 			</div>
-			<div class="text-center p-3">
-				<button type="submit" class="btn btn-primary">Create</button>
+			<div class="form-group">
+				<label>Password:</label>
+				<input type="text" class="form-control" th:field="*{password}"></input>
+			</div>
+			<div class="form-group">
+				<label>Role</label> <select th:name="role" class="form-control">
+					<option selected value="true">Admin</option>
+					<option value="false">User</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Staff</label> <select th:name="staff" required="required"
+					class="form-control">
+					<th:block th:each="staff : ${listStaff}">
+						<option th:text="${staff.name}" th:value="${staff.id}"></option>
+					</th:block>
+				</select>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Add</button>
 			</div>
 		</form>
 	</div>
