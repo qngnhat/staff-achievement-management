@@ -1,7 +1,9 @@
 package com.nez.StaffAchievementManagement.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,27 +15,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "records")
 public class Record {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private boolean type;
+	@Column(length = 200)
 	private String reason;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private String date;
 	@ManyToOne
 	@JoinColumn(name = "staff_id")
 	private Staff staff;
-
-	public Record() {
-	}
-
-	public Record(int id, boolean type, String reason, String date, Staff staff) {
-		super();
-		this.id = id;
-		this.type = type;
-		this.reason = reason;
-		this.date = date;
-		this.staff = staff;
-	}
 
 	public int getId() {
 		return id;
@@ -73,12 +64,6 @@ public class Record {
 
 	public void setStaff(Staff staff) {
 		this.staff = staff;
-	}
-
-	@Override
-	public String toString() {
-		return "Record [id=" + id + ", type=" + type + ", reason=" + reason + ", date=" + date + ", staff=" + staff
-				+ "]";
 	}
 
 }

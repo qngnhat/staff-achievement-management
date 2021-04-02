@@ -1,32 +1,30 @@
 package com.nez.StaffAchievementManagement.model;
 
-import java.util.Collection;
-
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "departs")
 public class Depart {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(length = 50, nullable = false, unique = true)
 	private String name;
-	@OneToMany(mappedBy = "depart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Collection<Staff> staffs;
 
 	public Depart() {
 	}
 
-	public Depart(int id, String name, Collection<Staff> staffs) {
-		super();
+	public Depart(int id) {
 		this.id = id;
+	}
+
+	public Depart(String name) {
 		this.name = name;
-		this.staffs = staffs;
 	}
 
 	public int getId() {
@@ -44,19 +42,5 @@ public class Depart {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public Collection<Staff> getStaffs() {
-		return staffs;
-	}
-
-	public void setStaffs(Collection<Staff> staffs) {
-		this.staffs = staffs;
-	}
-
-	@Override
-	public String toString() {
-		return "Depart [id=" + id + ", name=" + name + "]";
-	}
-
 
 }

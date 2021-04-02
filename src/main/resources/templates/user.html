@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -10,33 +8,24 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Import Boostrap css, js, font awesome here -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css"
 	rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-	
-</script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
-	
-</script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<link href="../css/style.css" rel="stylesheet">
-<title>BBC Company</title>
-<link rel="icon" type="image/png" href="../images/logo.png" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link href="css/style.css" rel="stylesheet">
+<title>User | BBC Company</title>
+<link rel="icon" type="image/png" th:href="@{../images/logo.png}"
+	th:src="@{../images/logo.png}" />
 </head>
 
 <body>
 	<!-- Navaigation -->
-	<nav
+		<nav
 		class="navbar navbar-expand-md navbar-light bg-light sticky-top col-12">
 
 		<div class="container-fluid">
-			<a class="navbar-branch" href="#"> <img src="../images/logo.png"
-				height="40">
+			<a class="navbar-branch" href="#"> <img src="./images/logo.png"
+				th:src="@{./images/logo.png}" height="40">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive">
@@ -44,12 +33,13 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
-					<li class="nav-item"><a class="nav-link" href="/about">ABOUT</a></li>
-					<li class="nav-item"><a class="nav-link" href="/staff">STAFF</a></li>
-					<li class="nav-item"><a class="nav-link" href="/depart">DEPART</a></li>
-					<li class="nav-item"><a class="nav-link" href="/record">RECORD</a></li>
-					<li class="nav-item"><a class="nav-link active" href="user">USER</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/}">HOME</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/about}">ABOUT</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/staff}">STAFF</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/depart}">DEPART</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/record}">RECORD</a></li>
+					<li class="nav-item"><a class="nav-link active" th:href="@{/user}">USER</a></li>
 				</ul>
 			</div>
 		</div>
@@ -210,7 +200,7 @@
 		<div class="container-fluid padding">
 			<div class="row text-center">
 				<div class="col-md-4">
-					<img src="./images/logo.png" th:src="@{./images/logo.png}"
+					<img src="../images/logo.png" th:src="@{../images/logo.png}"
 						style="height: 3rem; padding-top: 1rem;">
 					<hr class="light">
 					<p>111-222-3333</p>

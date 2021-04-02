@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -10,33 +8,25 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Import Boostrap css, js, font awesome here -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css"
 	rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-	
-</script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
-	
-</script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<link href="../css/style.css" rel="stylesheet">
-<title>BBC Company</title>
-<link rel="icon" type="image/png" href="../images/logo.png" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link href="css/style.css" rel="stylesheet">
+<title>Record | BBC Company</title>
+<link rel="icon" type="image/png" th:href="@{../images/logo.png}"
+	th:src="@{../images/logo.png}" />
 </head>
+
 
 <body>
 	<!-- Navaigation -->
-	<nav
+		<nav
 		class="navbar navbar-expand-md navbar-light bg-light sticky-top col-12">
 
 		<div class="container-fluid">
-			<a class="navbar-branch" href="#"> <img src="../images/logo.png"
-				height="40">
+			<a class="navbar-branch" href="#"> <img src="./images/logo.png"
+				th:src="@{./images/logo.png}" height="40">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive">
@@ -44,12 +34,13 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
-					<li class="nav-item"><a class="nav-link" href="/about">ABOUT</a></li>
-					<li class="nav-item"><a class="nav-link" href="/staff">STAFF</a></li>
-					<li class="nav-item"><a class="nav-link" href="/depart">DEPART</a></li>
-					<li class="nav-item"><a class="nav-link active" href="/record">RECORD</a></li>
-					<li class="nav-item"><a class="nav-link" href="/user">USER</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/}">HOME</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/about}">ABOUT</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/staff}">STAFF</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/depart}">DEPART</a></li>
+					<li class="nav-item"><a class="nav-link active" th:href="@{/record}">RECORD</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/user}">USER</a></li>
 				</ul>
 			</div>
 		</div>
@@ -66,18 +57,17 @@
 							<th>Type</th>
 							<th>Reason</th>
 							<th>Date</th>
-							<th>Staff ID</th>
 							<th>Staff name</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="record : ${records}">
-							<td th:text="${record.id}" id="id-table"></td>
-							<td th:text="${record.type}" id="username-table"></td>
-							<td th:text="${record.reason}" id="password-table"></td>
-							<td th:text="${record.date}" id="password-table"></td>
-							<td th:text="${record.staff.id}" id="password-table"></td>
-							<td th:text="${record.staff.name}" id="password-table"></td>
+					<th:block   th:each="record : ${records}">
+						<tr>
+							<td>[[${record.id}]]</td>
+							<td>[[${record.type?'Good':'Bad'}]]</td>
+							<td>[[${record.reason}]]</td>
+							<td>[[${record.date}]]</td>
+							<td>[[${record.staff.name}]]</td>
 						</tr>
 					</tbody>
 
@@ -85,76 +75,14 @@
 			</div>
 		</div>
 	</div>
-	<!-- Modal -->
 	<div class="container-fluid padding">
-
 		<div class="row text-right">
 			<div class="col align-self-end" style="right: 0;">
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#addUserModal">New Record</button>
-			</div>
-		</div>
-
-	</div>
-
-	<!-- Add User Modal -->
-	<div class="modal fade" id="addUserModal" tabindex="-1"
-		aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">New Record</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="add">
-						<div class="form-row">
-							<div class="form-group col-md-4">
-								<label for="inputState">Type</label> <select name="type"
-									id="inputType" class="form-control">
-									<option selected value="true">Doing well</option>
-									<option value="false">Not doing well</option>
-								</select>
-							</div>
-							<div class="form-group col-md-6">
-										<label for="birthday">Date</label> <input
-											class="form-control" type="date" id="date"
-											name="date">
-									</div>
-						</div>
-						<div class="form-row">
-
-							<div class="form-group col-md-8">
-								<label for="inputName">Staff Name</label> <select name="staff_id"
-									id="inputState" class="form-control">
-									<option selected th:each="staff : ${staffs}"
-										th:text="${staff.name}" th:value="${staff.id}"></option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-row">
-							<div class="form-group col-md-12">
-								<label for="message-text">Reason</label>
-								<textarea class="form-control" name="reason"></textarea>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">Add</button>
-						</div>
-					</form>
-				</div>
-
+				<a th:href="@{/record/new}"><button type="button"
+						class="btn btn-primary">Create Record</button></a>
 			</div>
 		</div>
 	</div>
-
-
 	<!-- Social Media -->
 
 	<div class="container-fluid padding">
@@ -178,8 +106,7 @@
 		<div class="container-fluid padding">
 			<div class="row text-center">
 				<div class="col-md-4">
-					<img src="../../static/images/logo.png"
-						th:src="@{../../static/images/logo.png}"
+					<img th:src="@{../images/logo.png}"
 						style="height: 3rem; padding-top: 1rem;">
 					<hr class="light">
 					<p>111-222-3333</p>

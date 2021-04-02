@@ -7,32 +7,34 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nez.StaffAchievementManagement.model.Depart;
 import com.nez.StaffAchievementManagement.repository.DepartRepository;
 
 @Controller
-@RequestMapping("depart")
 public class DepartController {
 
 	@Autowired
 	DepartRepository departRepository;
 	
-	@GetMapping("")
+	@GetMapping("/depart")
 	public String viewDeparts (Model model) {
-		List<Depart> departs = departRepository.findAll();
-		
-		model.addAttribute("departs", departs);
+		model.addAttribute("departs", departRepository.findAll());
 		return "depart";
 	}
 	
-	@RequestMapping("add")
-	public String addDepart(Depart depart, Model model) {
+	@GetMapping("/depart/new")
+	public String formDepart(Model model) {
+		model.addAttribute("depart", new Depart());
+		return "depart-form";
+	}
+	
+	@PostMapping("/depart/save")
+	public String saveDepart(Depart depart) {
 		departRepository.save(depart);
-		List<Depart> departs = departRepository.findAll();
-		model.addAttribute("departs", departs);
-		return "depart";
+		return "redirect:/depart";
 	}
 	
 	@GetMapping("{id}")

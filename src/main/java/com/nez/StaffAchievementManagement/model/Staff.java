@@ -1,53 +1,31 @@
 package com.nez.StaffAchievementManagement.model;
 
-import java.util.Collection;
-
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "staffs")
 public class Staff {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(length = 128, nullable = false)
 	private String name;
 	private boolean gender;
 	private String birthday;
 	private String photo;
 	private String email;
 	private String phone;
-	private int salary;
+	private float salary;
 	@ManyToOne
 	@JoinColumn(name = "depart_id")
 	private Depart depart;
-	@OneToMany(mappedBy = "staff", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Collection<Record> records;
-
-	public Staff() {
-	}
-
-	public Staff(int id, String name, boolean gender, String birthday, String photo, String email, String phone,
-			int salary, Depart depart, Collection<Record> records) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.gender = gender;
-		this.birthday = birthday;
-		this.photo = photo;
-		this.email = email;
-		this.phone = phone;
-		this.salary = salary;
-		this.depart = depart;
-		this.records = records;
-	}
 
 	public int getId() {
 		return id;
@@ -109,7 +87,7 @@ public class Staff {
 		return salary;
 	}
 
-	public void setSalary(int salary) {
+	public void setSalary(float salary) {
 		this.salary = salary;
 	}
 
@@ -120,21 +98,5 @@ public class Staff {
 	public void setDepart(Depart depart) {
 		this.depart = depart;
 	}
-
-	public Collection<Record> getRecords() {
-		return records;
-	}
-
-	public void setRecords(Collection<Record> records) {
-		this.records = records;
-	}
-
-	@Override
-	public String toString() {
-		return "Staff [id=" + id + ", name=" + name + ", gender=" + gender + ", birthday=" + birthday + ", photo="
-				+ photo + ", email=" + email + ", phone=" + phone + ", salary=" + salary + ", depart=" + depart + "]";
-	}
-
-
 
 }
