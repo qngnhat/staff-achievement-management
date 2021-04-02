@@ -10,18 +10,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nez.StaffAchievementManagement.model.Record;
+import com.nez.StaffAchievementManagement.repository.DepartRepository;
 import com.nez.StaffAchievementManagement.repository.RecordRepository;
+import com.nez.StaffAchievementManagement.repository.StaffRepository;
 
 @Controller
 @RequestMapping("record")
 public class RecordController {
 	@Autowired
 	RecordRepository recordRepository;
+	@Autowired
+	StaffRepository staffRepository;
 	
 	@GetMapping("")
 	public String viewRecords (Model model) {
 		List<Record> records = recordRepository.findAll();
-		
+		model.addAttribute("staffs", staffRepository.findAll());	
 		model.addAttribute("records", records);
 		return "record";
 	}

@@ -54,7 +54,7 @@ public class DepartController {
 	
 	@RequestMapping("delete/{id}")
 	public String deleteDepart(@PathVariable("id") int id, Model model) {
-		Depart depart = departRepository.getOne(id);
+		Depart depart = departRepository.findById(id).orElseThrow();
 		departRepository.delete(depart);
 		
 		List<Depart> departs = departRepository.findAll();

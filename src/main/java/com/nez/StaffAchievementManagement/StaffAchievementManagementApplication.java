@@ -46,10 +46,10 @@ public class StaffAchievementManagementApplication implements CommandLineRunner{
 		departRepository.save(depart2);
 		departRepository.save(depart3);
 
-		Staff staff1 = new Staff(); staff1.setId(1);  staff1.setName("Iker Casillas");staff1.setGender(true);staff1.setBirthday("1985-05-11");staff1.setPhoto("../images/casillas.png");staff1.setEmail("qngnhat@gmail.com");staff1.setPhone("0983212321");staff1.setSalary(100000);staff1.setDepart(depart1);
-		Staff staff2 = new Staff(); staff2.setId(2);staff2.setName("Pepe");staff2.setGender(false); staff2.setBirthday("1985-05-11");staff2.setPhoto("../images/pepe.png");staff2.setEmail("qngnhat@gmail.com");staff2.setPhone("09843122311");staff2.setSalary(100000);staff2.setDepart(depart1);
-		Staff staff3 = new Staff(); staff3.setId(3);staff3.setName("Dani Carvajal");staff3.setGender(true);staff3.setBirthday("1985-02-15");staff3.setPhoto("../images/carvajal.png");staff3.setEmail("qngnhat@gmail.com");staff3.setPhone("0983892344");staff3.setSalary(130000);staff3.setDepart(depart2);
-		Staff staff4 = new Staff(); staff4.setId(4);staff4.setName("Sergio Ramos");staff4.setGender(false);staff4.setBirthday("1986-11-10");staff4.setPhoto("../images/ramos.png");staff4.setEmail("qngnhat@gmail.com");staff4.setPhone("0987567651");staff4.setSalary(170000);staff4.setDepart(depart3);
+		Staff staff1 = new Staff(); staff1.setId(1);  staff1.setName("Iker Casillas");staff1.setGender(true);staff1.setBirthday("1985-05-11");staff1.setPhoto("casillas.png");staff1.setEmail("qngnhat@gmail.com");staff1.setPhone("0983212321");staff1.setSalary(100000);staff1.setDepart(depart1);
+		Staff staff2 = new Staff(); staff2.setId(2);staff2.setName("Pepe");staff2.setGender(false); staff2.setBirthday("1985-05-11");staff2.setPhoto("pepe.png");staff2.setEmail("qngnhat@gmail.com");staff2.setPhone("09843122311");staff2.setSalary(100000);staff2.setDepart(depart1);
+		Staff staff3 = new Staff(); staff3.setId(3);staff3.setName("Dani Carvajal");staff3.setGender(true);staff3.setBirthday("1985-02-15");staff3.setPhoto("carvajal.png");staff3.setEmail("qngnhat@gmail.com");staff3.setPhone("0983892344");staff3.setSalary(130000);staff3.setDepart(depart2);
+		Staff staff4 = new Staff(); staff4.setId(4);staff4.setName("Sergio Ramos");staff4.setGender(false);staff4.setBirthday("1986-11-10");staff4.setPhoto("ramos.png");staff4.setEmail("qngnhat@gmail.com");staff4.setPhone("0987567651");staff4.setSalary(170000);staff4.setDepart(depart3);
 		
 		staffRepository.save(staff1);
 		staffRepository.save(staff2);

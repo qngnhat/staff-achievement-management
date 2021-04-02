@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nez.StaffAchievementManagement.model.User;
+import com.nez.StaffAchievementManagement.repository.StaffRepository;
 import com.nez.StaffAchievementManagement.repository.UserRepository;
 
 @Controller
@@ -19,11 +20,12 @@ public class UserController {
 	@Autowired
 	UserRepository userRepository;
 
-	
+	@Autowired
+	StaffRepository staffRepository;
 	@GetMapping("")
 	public String viewUsers(Model model) {
 		List<User> users = userRepository.findAll();
-
+		model.addAttribute("staffs", staffRepository.findAll());	
 		model.addAttribute("users", users);
 		return "user";
 	}

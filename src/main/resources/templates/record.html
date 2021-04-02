@@ -58,7 +58,7 @@
 	<div class="container-fluid padding" style="margin-top: 3rem;">
 		<div class="row text-center padding">
 			<div class="col-12">
-				<h2>List of User</h2>
+				<h2>List of Record</h2>
 				<table class="table table-hover table-sm" id="myTable">
 					<thead>
 						<tr>
@@ -71,7 +71,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="record : ${records}" data-toggle="modal" data-target="#updateUserModal">
+						<tr th:each="record : ${records}">
 							<td th:text="${record.id}" id="id-table"></td>
 							<td th:text="${record.type}" id="username-table"></td>
 							<td th:text="${record.reason}" id="password-table"></td>
@@ -91,18 +91,19 @@
 		<div class="row text-right">
 			<div class="col align-self-end" style="right: 0;">
 				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#addUserModal">New user</button>
+					data-target="#addUserModal">New Record</button>
 			</div>
 		</div>
 
 	</div>
 
-<!-- Add User Modal -->
-	<div class="modal fade" id="addUserModal" tabindex="-1"  aria-hidden="true">
-		<div class="modal-dialog">
+	<!-- Add User Modal -->
+	<div class="modal fade" id="addUserModal" tabindex="-1"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">New user</h5>
+					<h5 class="modal-title">New Record</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -110,17 +111,36 @@
 				</div>
 				<div class="modal-body">
 					<form action="add">
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">ID:</label> <input
-								type="text" class="form-control" name="id">
+						<div class="form-row">
+							<div class="form-group col-md-4">
+								<label for="inputState">Type</label> <select name="type"
+									id="inputType" class="form-control">
+									<option selected value="true">Doing well</option>
+									<option value="false">Not doing well</option>
+								</select>
+							</div>
+							<div class="form-group col-md-6">
+										<label for="birthday">Date</label> <input
+											class="form-control" type="date" id="date"
+											name="date">
+									</div>
 						</div>
-						<div class="form-group">
-							<label for="message-text" class="col-form-label">Username:</label>
-							<textarea class="form-control" name="username"></textarea>
+						<div class="form-row">
+
+							<div class="form-group col-md-8">
+								<label for="inputName">Staff Name</label> <select name="staff_id"
+									id="inputState" class="form-control">
+									<option selected th:each="staff : ${staffs}"
+										th:text="${staff.name}" th:value="${staff.id}"></option>
+								</select>
+							</div>
 						</div>
-						<div class="form-group">
-							<label for="message-text" class="col-form-label">Password:</label>
-							<textarea class="form-control" name="password"></textarea>
+
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<label for="message-text">Reason</label>
+								<textarea class="form-control" name="reason"></textarea>
+							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
@@ -133,43 +153,8 @@
 			</div>
 		</div>
 	</div>
-	
-	<!-- Modify User Modal -->
-<div class="modal fade" id="updateUserModal" tabindex="-1"  aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Modify user</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="add">
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">ID:</label> <input
-								type="text" class="form-control" name="id">
-						</div>
-						<div class="form-group">
-							<label for="message-text" class="col-form-label">Username:</label>
-							<textarea class="form-control" name="username"></textarea>
-						</div>
-						<div class="form-group">
-							<label for="message-text" class="col-form-label">Password:</label>
-							<textarea class="form-control" name="password"></textarea>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">Modify</button>
-						</div>
-					</form>
-				</div>
 
-			</div>
-		</div>
-	</div>
+
 	<!-- Social Media -->
 
 	<div class="container-fluid padding">
@@ -193,7 +178,9 @@
 		<div class="container-fluid padding">
 			<div class="row text-center">
 				<div class="col-md-4">
-					<img src="../../static/images/logo.png"  th:src="@{../../static/images/logo.png}" style="height: 3rem; padding-top: 1rem;">
+					<img src="../../static/images/logo.png"
+						th:src="@{../../static/images/logo.png}"
+						style="height: 3rem; padding-top: 1rem;">
 					<hr class="light">
 					<p>111-222-3333</p>
 					<p>mymail@gmail.com</p>

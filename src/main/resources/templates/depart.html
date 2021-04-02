@@ -49,8 +49,7 @@
 					<li class="nav-item"><a class="nav-link" href="/staff">STAFF</a></li>
 					<li class="nav-item"><a class="nav-link active" href="/depart">DEPART</a></li>
 					<li class="nav-item"><a class="nav-link" href="/record">RECORD</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/user">USER</a></li>
+					<li class="nav-item"><a class="nav-link" href="/user">USER</a></li>
 				</ul>
 			</div>
 		</div>
@@ -60,7 +59,7 @@
 		<div class="row text-center padding">
 			<div class="col-12">
 				<h2>List of Depart</h2>
-				<table class="table table-hover table-sm" id="myTable">
+				<table class="table table-hover table-sm" id="departTable">
 					<thead>
 						<tr>
 							<th>Id</th>
@@ -68,13 +67,25 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="depart : ${departs}" data-toggle="modal" data-target="#updateDepartModal">
+						<tr th:each="depart : ${departs}" data-toggle="modal"
+							data-target="#updateDepartModal">
 							<td th:text="${depart.id}"></td>
 							<td th:text="${depart.name}"></td>
+							<td><a th:href="@{depart/delete/{id}(id=${depart.id})}">Delete</a></td>
 						</tr>
 					</tbody>
-
 				</table>
+				<script>
+					var table = document.getElementById('departTable'), rIndex;
+					for (var i = 0; i < table.rows.length; i++) {
+						table.rows[i].onclick = function() {
+							rIndex = this.rowIndex;
+							console.log(rIndex);
+							document.getElementById("inputId").value = this.cells[0].innerHTML;
+							document.getElementById("inputName").value = this.cells[1].innerHTML;
+						}
+					}
+				</script>
 			</div>
 		</div>
 	</div>
@@ -90,37 +101,9 @@
 
 	</div>
 
-<!-- Add User Modal -->
-	<div class="modal fade" id="addDepartModal" tabindex="-1"  aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Create new depart</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="add">
-						<div class="form-group">
-							<label for="text" class="col-form-label">Name:</label>
-							<input type="text" class="form-control" name="name"></input>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">Create</button>
-						</div>
-					</form>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	
-	<!-- Modify User Modal -->
-<div class="modal fade" id="updateDepartModal" tabindex="-1"  aria-hidden="true">
+	<!-- Modify Depart Modal -->
+	<div class="modal fade" id="updateDepartModal" tabindex="-1"
+		aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -132,9 +115,15 @@
 				</div>
 				<div class="modal-body">
 					<form action="depart/update">
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<label for="inputId">ID</label> <input type="text" name="id"
+									class="form-control" id="inputId">
+							</div>
+						</div>
 						<div class="form-group">
-							<label for="text" class="col-form-label">Name:</label>
-							<input type="text" class="form-control" name="name"></input>
+							<label for="text" class="col-form-label">Name:</label> <input
+								type="text" class="form-control" name="name" id="inputName"></input>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
@@ -147,6 +136,44 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Add Depart Modal -->
+	<div class="modal fade" id="addDepartModal" tabindex="-1"
+		aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Create new depart</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="add">
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<label for="inputId">ID</label> <input type="text" name="id"
+									class="form-control" id="inputId">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="text" class="col-form-label">Name:</label> <input
+								type="text" class="form-control" name="name"></input>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Create</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
 	<!-- Social Media -->
 
 	<div class="container-fluid padding">
@@ -170,7 +197,8 @@
 		<div class="container-fluid padding">
 			<div class="row text-center">
 				<div class="col-md-4">
-					<img src="./images/logo.png" th:src="@{./images/logo.png}" style="height: 3rem; padding-top: 1rem;">
+					<img src="./images/logo.png" th:src="@{./images/logo.png}"
+						style="height: 3rem; padding-top: 1rem;">
 					<hr class="light">
 					<p>111-222-3333</p>
 					<p>mymail@gmail.com</p>
