@@ -37,30 +37,16 @@ public class DepartController {
 		return "redirect:/depart";
 	}
 	
-	@GetMapping("{id}")
-	public String viewDepart(@PathVariable("id") int id, Model model) {
-		Depart departs = departRepository.findById(id).orElse(null);
-		model.addAttribute("departs", departs);
-		
-		return "depart";
+	@GetMapping("/depart/edit/{id}")
+	public String editDepartForm(@PathVariable("id") Integer id, Model model) {
+		Depart depart = departRepository.findById(id).get();
+		model.addAttribute("depart", depart);
+		return "depart-form";
 	}
 	
-	
-	@RequestMapping	("update")
-	public String updateDepart(Depart depart, Model model) {
-		departRepository.save(depart);
-		List<Depart> departs = departRepository.findAll();
-		model.addAttribute("departs", departs);
-		return "depart";
-	}
-	
-	@RequestMapping("delete/{id}")
-	public String deleteDepart(@PathVariable("id") int id, Model model) {
-		Depart depart = departRepository.findById(id).orElseThrow();
-		departRepository.delete(depart);
-		
-		List<Depart> departs = departRepository.findAll();
-		model.addAttribute("departs", departs);
-		return "depart";
+	@RequestMapping("/depart/delete/{id}")
+	public String deleteDepart(@PathVariable("id") Integer id, Model model) {
+		departRepository.deleteById(id);		
+		return "redirect:/depart";
 	}
 }

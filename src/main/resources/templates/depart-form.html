@@ -14,7 +14,7 @@
 	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 <link href="css/style.css" rel="stylesheet">
 <title>New Depart | BBC Company</title>
-<link rel="icon" th:type="image/png" th:href="@{../images/logo.png}"
+<link rel="icon" type="image/png" th:href="@{../images/logo.png}"
 	th:src="@{../images/logo.png}" />
 </head>
 
@@ -46,16 +46,17 @@
 	</nav>
 	<!-- Add Depart form -->
 	<div class="container text-center">
-		<div>
-			<h1>Create New Depart</h1>
-		</div>
+		<div th:if="${depart.id == null}"><h1>Create New Depart</h1></div>
+		<div th:unless="${depart.id == null}"><h1>Edit Depart</h1></div>
 		<form th:action="@{/depart/save}" th:object="${depart}" method="post"
 			style="max-width: 600px; margin: 0 auto;">
+			<input type="hidden" th:field="*{id}" th:value="${depart.id}">
 			<div class="m-3">
 				<div class="form-group row">
 					<label class="col-form-label col-sm-4">Depart name</label>
 					<div class="con-sm-8">
-						<input class="form-control" type="text" th:field="*{name}" required="required">
+						<input class="form-control" type="text" th:field="*{name}"
+							required="required">
 					</div>
 				</div>
 			</div>
@@ -88,8 +89,9 @@
 		<div class="container-fluid padding">
 			<div class="row text-center">
 				<div class="col-md-4">
+					<hr class="light">
 					<img th:src="@{../images/logo.png}"
-						style="height: 3rem; padding-top: 1rem;">
+						style="margin: -16px;">
 					<hr class="light">
 					<p>111-222-3333</p>
 					<p>mymail@gmail.com</p>
