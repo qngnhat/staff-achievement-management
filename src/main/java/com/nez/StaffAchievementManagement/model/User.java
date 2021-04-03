@@ -17,7 +17,9 @@ public class User {
 	private int id;
 	@Column(length = 40, nullable = false, unique = true)
 	private String username;
+	@Column(nullable = false)
 	private String password;
+	@Column(nullable = false)
 	private boolean role;
 	@OneToOne
 	@JoinColumn(name = "staff_id")

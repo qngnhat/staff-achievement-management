@@ -1,23 +1,16 @@
 package com.nez.StaffAchievementManagement;
 
 
-import java.util.Collections;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.nez.StaffAchievementManagement.model.Depart;
-import com.nez.StaffAchievementManagement.model.Record;
-import com.nez.StaffAchievementManagement.model.Staff;
-import com.nez.StaffAchievementManagement.model.User;
-import com.nez.StaffAchievementManagement.repository.DepartRepository;
-import com.nez.StaffAchievementManagement.repository.RecordRepository;
-import com.nez.StaffAchievementManagement.repository.StaffRepository;
 import com.nez.StaffAchievementManagement.repository.UserRepository;
 
+
 @SpringBootApplication
+
 public class StaffAchievementManagementApplication{
 
 	public static void main(String[] args) {

@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nez.StaffAchievementManagement.model.User;
 import com.nez.StaffAchievementManagement.repository.StaffRepository;
@@ -36,32 +38,18 @@ public class UserController {
 		userRepository.save(user);
 		return "redirect:/user";
 	}
-//	
-//	@GetMapping("{id}")
-//	public String viewUser(@PathVariable("id") int id, Model model) {
-//		User users = userRepository.findById(id).orElse(null);
-//		model.addAttribute("users", users);
-//		
-//		return "user";
-//	}
-//	
-//	@RequestMapping	("update")
-//	public String updateUser(User user, Model model) {
-//		userRepository.save(user);
-//		List<User> users = userRepository.findAll();
-//		model.addAttribute("users", users);
-//		return "user";
-//	}
-//	
-//	@RequestMapping("delete/{id}")
-//	public String deleteUser(@PathVariable("id") int id, Model model) {
-//		User user = userRepository.getOne(id);
-//		userRepository.delete(user);
-//		
-//		List<User> users = userRepository.findAll();
-//		model.addAttribute("users", users);
-//		return "user";
-//	}
-//	
 
+	@GetMapping("/user/edit/{id}")
+	public String editUserForm(@PathVariable("id") Integer id, Model model) {
+		User user = userRepository.findById(id).get();
+		model.addAttribute("user", user);
+		model.addAttribute("listStaff", staffRepository.findAll());
+		return "user-form";
+	}
+
+	@RequestMapping("/user/delete/{id}")
+	public String deleteUser(@PathVariable("id") Integer id, Model model) {
+		userRepository.deleteById(id);
+		return "redirect:/user";
+	}
 }

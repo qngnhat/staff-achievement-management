@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nez.StaffAchievementManagement.model.Depart;
 import com.nez.StaffAchievementManagement.model.Staff;
@@ -28,7 +30,7 @@ public class StaffController {
 
 	@GetMapping("/staff/new")
 	public String formStaff(Model model) {
-		model.addAttribute("staff", new Depart());
+		model.addAttribute("staff", new Staff());
 		model.addAttribute("listDepart", departRepository.findAll());
 		return "staff-form";
 	}
@@ -39,30 +41,17 @@ public class StaffController {
 		return "redirect:/staff";
 	}
 
-//	@GetMapping("{id}")
-//	public String viewStaff(@PathVariable("id") int id, Model model) {
-//		Staff staffs = staffRepository.findById(id).orElse(null);
-//		model.addAttribute("staffs", staffs);
-//
-//		return "staff";
-//	}
-//
-//	@RequestMapping("update")
-//	public String updateStaff(Staff staff, Model model) {
-//		staffRepository.save(staff);
-//		List<Staff> staffs = staffRepository.findAll();
-//		model.addAttribute("staffs", staffs);
-//		return "staff";
-//	}
-//
-//	@RequestMapping("delete/{id}")
-//	public String deleteStaff(@PathVariable("id") int id, Model model) {
-//		Staff staff = staffRepository.getOne(id);
-//		System.out.println(staff.getId());
-//		staffRepository.delete(staff);
-//
-//		model.addAttribute("staffs", staffRepository.findAll());
-//		return "staff";
-//	}
+	@GetMapping("/staff/edit/{id}")
+	public String editStaffForm(@PathVariable("id") Integer id, Model model) {
+		Staff staff = staffRepository.findById(id).get();
+		model.addAttribute("staff", staff);
+		model.addAttribute("listDepart", departRepository.findAll());
+		return "staff-form";
+	}
 
+	@RequestMapping("/staff/delete/{id}")
+	public String deleteStaff(@PathVariable("id") Integer id, Model model) {
+		staffRepository.deleteById(id);
+		return "redirect:/staff";
+	}
 }

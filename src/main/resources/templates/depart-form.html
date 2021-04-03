@@ -10,12 +10,24 @@
 <!-- Import Boostrap css, js, font awesome here -->
 <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css"
-	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-<link href="css/style.css" rel="stylesheet">
+<link href="../css/style.css" rel="stylesheet">
 <title>New Depart | BBC Company</title>
 <link rel="icon" type="image/png" th:href="@{../images/logo.png}"
 	th:src="@{../images/logo.png}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css"
+	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	
+</script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
+	
+</script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -24,8 +36,8 @@
 		class="navbar navbar-expand-md navbar-light bg-light sticky-top col-12">
 
 		<div class="container-fluid">
-			<a class="navbar-branch" href="#"> <img
-				th:src="@{../images/logo.png}" height="40">
+			<a class="navbar-branch" th:href="@{/}"> <img
+				src="../images/logo.png" th:src="@{../images/logo.png}" height="40">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive">
@@ -46,8 +58,12 @@
 	</nav>
 	<!-- Add Depart form -->
 	<div class="container text-center">
-		<div th:if="${depart.id == null}"><h1>Create New Depart</h1></div>
-		<div th:unless="${depart.id == null}"><h1>Edit Depart</h1></div>
+		<div th:if="${depart.id == null}">
+			<h1>Create New Depart</h1>
+		</div>
+		<div th:unless="${depart.id == null}">
+			<h1>Edit Depart</h1>
+		</div>
 		<form th:action="@{/depart/save}" th:object="${depart}" method="post"
 			style="max-width: 600px; margin: 0 auto;">
 			<input type="hidden" th:field="*{id}" th:value="${depart.id}">
@@ -61,7 +77,7 @@
 				</div>
 			</div>
 			<div class="text-center p-3">
-				<button type="submit" class="btn btn-primary">Create</button>
+				<button type="submit" class="btn btn-primary">Accept</button>
 			</div>
 		</form>
 	</div>
@@ -90,8 +106,7 @@
 			<div class="row text-center">
 				<div class="col-md-4">
 					<hr class="light">
-					<img th:src="@{../images/logo.png}"
-						style="margin: -16px;">
+					<img th:src="@{../images/logo.png}" style="margin: -16px;">
 					<hr class="light">
 					<p>111-222-3333</p>
 					<p>mymail@gmail.com</p>

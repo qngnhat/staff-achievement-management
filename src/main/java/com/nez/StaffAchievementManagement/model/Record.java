@@ -17,9 +17,11 @@ public class Record {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(nullable = false)
 	private boolean type;
 	@Column(length = 200)
 	private String reason;
+	@Column(nullable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private String date;
 	@ManyToOne
@@ -66,4 +68,5 @@ public class Record {
 		this.staff = staff;
 	}
 
+	
 }
