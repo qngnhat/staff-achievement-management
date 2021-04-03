@@ -111,15 +111,17 @@
 
 	<div class="container-fluid padding">
 		<div class="row padding">
-			<div class="col-md-3" th:each="record : ${records}">
-				<div class="card">
-					<img class="card-img-top"
-						th:src="@{../images/{id}(id=${record.staff.photo})}">
-					<div class="card-body">
-						<h4 class="card-title" th:text="${record.staff.name}"></h4>
-						<p class="card-text" th:text="${record.staff.depart.name}"></p>
+			<div class="col-md-3">
+				<th:block th:each="s : ${listStaff}">
+					<div class="card">
+						<img class="card-img-top"
+						th:src="@{../images/{id}(id=${s.photo})}">
+						<div class="card-body">
+							<h4 class="card-title">[[${s.staff}]]</h4>
+							<p class="card-text">[[${s.depart}]]</p>
+						</div>
 					</div>
-				</div>
+				</th:block>
 			</div>
 		</div>
 	</div>

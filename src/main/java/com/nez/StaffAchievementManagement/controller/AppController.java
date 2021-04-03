@@ -1,6 +1,6 @@
 package com.nez.StaffAchievementManagement.controller;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,22 +10,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.nez.StaffAchievementManagement.model.Record;
-import com.nez.StaffAchievementManagement.model.StaffPoint;
+import com.nez.StaffAchievementManagement.model.staff_point;
 import com.nez.StaffAchievementManagement.repository.RecordRepository;
+import com.nez.StaffAchievementManagement.repository.staff_pointRepo;
 
 @Controller
 public class AppController {
 
 	@Autowired
 	RecordRepository recordRepository;
+	@Autowired
+	staff_pointRepo staff_pointRepo;
 
-	private List<StaffPoint> listStaff;
-	
 	@GetMapping("/")
 	public String viewHome(Model model, HttpServletRequest request) {
 		model.addAttribute("records", recordRepository.findAll());
-		System.out.println(getListStaffPoints());
+		model.addAttribute("listStaff", listStaff_points());
+
 		return "home";
 	}
 
@@ -34,13 +35,14 @@ public class AppController {
 		return "about";
 	}
 	
-	public List<StaffPoint> getListStaffPoints(){
-		List<Record> records = recordRepository.findAll();
-		
-		for(Record r : records) {
-			System.out.println(r);
+	private List<staff_point> listStaff_points(){
+		List<staff_point> Oldlist = staff_pointRepo.findAll();
+		List<staff_point> Newlist = new ArrayList<staff_point>();
+		for(int i=0; i<5;i++) {
+			Newlist.add(Oldlist.get(i));
 		}
-		return listStaff;
+		System.out.println(Newlist);
+		return Newlist;
 	}
 
 }

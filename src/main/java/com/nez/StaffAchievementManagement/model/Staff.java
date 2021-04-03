@@ -86,4 +86,10 @@ public class Staff {
 	public void setDepart(Depart depart) {
 		this.depart = depart;
 	}
+	@Override
+	public String toString() {
+		return "Staff [name=" + name + "]";
+	}
+	
+	
 }

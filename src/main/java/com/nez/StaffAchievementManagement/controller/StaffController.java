@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.nez.StaffAchievementManagement.model.Depart;
 import com.nez.StaffAchievementManagement.model.Staff;
 import com.nez.StaffAchievementManagement.repository.DepartRepository;
 import com.nez.StaffAchievementManagement.repository.StaffRepository;
@@ -25,6 +24,7 @@ public class StaffController {
 	@GetMapping("/staff")
 	public String viewStaffs(Model model) {
 		model.addAttribute("staffs", staffRepository.findAll());
+		System.out.println(staffRepository.findAll());
 		return "staff";
 	}
 

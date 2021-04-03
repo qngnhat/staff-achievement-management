@@ -43,4 +43,9 @@ public class Depart {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "Depart [name=" + name + "]";
+	}
+
 }
