@@ -102,7 +102,7 @@
 	<div class="container-fluid padding">
 		<div class="row welcome text-center">
 			<div class="col-12">
-				<h1 class="display-4">TOP 5 Nhân Viên Xuất Sắc Trong Tuần</h1>
+				<h1 class="display-4">Top 5 the best staff</h1>
 			</div>
 		</div>
 	</div>
@@ -110,43 +110,24 @@
 	<!-- Top 5 Staff -->
 
 	<div class="container-fluid padding">
-		<div class="row padding">
-			<div class="col-md-3">
-				<th:block th:each="s : ${listStaff}">
+		<div class="row row-cols-5 text-center justify-content-md-center">
+			<th:block th:each="s : ${listStaff}">
+				<div class="col"  style="margin-top: 10px;">
 					<div class="card">
 						<img class="card-img-top"
-						th:src="@{../images/{id}(id=${s.photo})}">
+							th:src="@{../images/{id}(id=${s.photo})}">
 						<div class="card-body">
 							<h4 class="card-title">[[${s.staff}]]</h4>
 							<p class="card-text">[[${s.depart}]]</p>
 						</div>
 					</div>
-				</th:block>
-			</div>
+				</div>
+			</th:block>
 		</div>
 	</div>
 
-	<hr class="my-2">
-	<div class="container-fluid padding">
-		<div class="row text-center padding">
-			<div class="col-xs-12 col-sm-6 col-md-4 ">
-				<i class="fab fa-react"></i>
-				<h3>REACT</h3>
-				<p>Build the latest version of React</p>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4">
-				<i class="fab fa-angular"></i>
-				<h3>Angular</h3>
-				<p>Build your Website and Front-end Application</p>
-			</div>
-			<div class="col-sm-12 col-md-4">
-				<i class="fab fa-css3"></i>
-				<h3>CSS3 , HTML5</h3>
-				<p>Customize your web UI with Html5 and Css3</p>
-			</div>
-		</div>
-		<hr class="my-4">
-	</div>
+	
+	<hr class="my-4">
 	<div class="container-fluid padding">
 		<div class="row text-center padding">
 			<div class="col-12">
@@ -171,9 +152,9 @@
 					<hr class="light">
 					<img th:src="@{../images/logo.png}" style="margin: -16px;">
 					<hr class="light">
-					<p>111-222-3333</p>
-					<p>mymail@gmail.com</p>
-					<p>Bach Mai street, Hanoi, Vietnam</p>
+					<p>+84852970165</p>
+					<p>qngnhat@gmail.com</p>
+					<p>Dong Bac, 12 District, Ho Chi Minh, Vietnam</p>
 				</div>
 				<div class="col-md-4">
 					<hr class="light">
@@ -184,15 +165,15 @@
 				</div>
 				<div class="col-md-4">
 					<hr class="light">
-					<h5>Services</h5>
+					<h5>Activities</h5>
 					<hr class="light">
-					<p>Outsourcing</p>
-					<p>Website development</p>
-					<p>Mobile applications</p>
+					<p>FootBall</p>
+					<p>Basketball</p>
+					<p>Swimming</p>
 				</div>
 				<div class="col-12">
 					<hr class="light-100">
-					<h5 style="color: #FB8B00;">&copy; WebPro</h5>
+					<h5 style="color: #8D8D8D;">-nez&trade;</h5>
 				</div>
 			</div>
 		</div>
